@@ -3,6 +3,9 @@ import chalk from 'chalk'
 import consola from 'consola'
 import { projRoot } from '@element-plus/build-utils'
 
+/**
+ * 创建一个子进程执行指定的命令，方便并行处理任务
+ */
 export const run = async (command: string, cwd: string = projRoot) =>
   new Promise<void>((resolve, reject) => {
     const [cmd, ...args] = command.split(' ')
