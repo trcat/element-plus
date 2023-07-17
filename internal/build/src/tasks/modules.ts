@@ -13,6 +13,9 @@ import { buildConfigEntries, target } from '../build-info'
 
 import type { OutputOptions } from 'rollup'
 
+/**
+ * 通过 rollup 打包 packages 文件夹中的模块
+ */
 export const buildModules = async () => {
   const input = excludeFiles(
     await glob('**/*.{js,ts,vue}', {
@@ -35,9 +38,11 @@ export const buildModules = async () => {
           vueJsx: vueJsx(),
         },
       }),
+      // 支持 node-modules 加载
       nodeResolve({
         extensions: ['.mjs', '.js', '.json', '.ts'],
       }),
+      // 编译 commonjs 模块
       commonjs(),
       esbuild({
         sourceMap: true,

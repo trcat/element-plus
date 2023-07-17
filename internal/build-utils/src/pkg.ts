@@ -29,6 +29,9 @@ export const getPackageDependencies = (
   }
 }
 
+/**
+ * 排除包含在不需要处理的文件路径中的文件
+ */
 export const excludeFiles = (files: string[]) => {
   const excludes = ['node_modules', 'test', 'mock', 'gulpfile', 'dist']
   return files.filter(
